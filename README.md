@@ -3,7 +3,7 @@
 [![Total Downloads](https://poser.pugx.org/brysem/phpenums/downloads.png)](https://packagist.org/packages/brysem/phpenums)
 [![Build Status](https://travis-ci.org/brysem/phpenums.svg?branch=master)](https://travis-ci.org/brysem/phpenums)
 [![codecov](https://codecov.io/gh/brysem/phpenums/branch/master/graph/badge.svg)](https://codecov.io/gh/brysem/phpenums)
-[![PHP-Eye](https://php-eye.com/badge/brysem/phpenums/tested.svg?style=flat)](https://php-eye.com/package/brysem/phpenums)
+[![PHP-Eye](https://php-eye.com/badge/brysem/phpenums/tested.svg)](https://php-eye.com/package/brysem/phpenums)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 
 Enums made simple in PHP. Providing you with an easy to use interface.
