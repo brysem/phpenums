@@ -123,11 +123,12 @@ class EnumBasicTest extends TestCase
         try {
             $status->set(1337);
         } catch (UndefinedEnumValueException $e) {
-            //
+            $this->assertEquals(1337, $e->value());
         }
 
-        $this->assertTrue(! empty($e));
-        $this->assertEquals(1337, $e->value());
+        if (empty($e)) {
+            $this->fail('UndefinedEnumValueException was not thrown but expected.');
+        }
     }
 
     public function testEnumThrowsInvalidArgumentExceptionForExistingValue()
