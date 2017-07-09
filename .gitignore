@@ -1,0 +1,9 @@
+.DS_Store
+.idea
+*.iml
+.php_cs
+.php_cs.cache
+vendor
+composer.phar
+composer.lock
+phpunit.xml
