@@ -91,6 +91,32 @@ class UserStatus extends Enum
 }
 ```
 
+## Laravel Example
+```php
+<?php
+
+namespace App\Models;
+
+use App\Models\Enums\UserType;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    public function getTypeAttribute()
+    {
+        return new UserType($this->attributes['type']);
+    }
+
+    public function setTypeAttribute($value)
+    {
+        $this->attributes['type'] = (new UserType($value))->value();
+    }
+}
+```
+You can now easily do the following.
+
+`$user->status = UserType::ACTIVE;`
+
 ## Features
 
 * Automatic string casting.
