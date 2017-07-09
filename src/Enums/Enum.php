@@ -75,7 +75,7 @@ abstract class Enum implements EnumContract
 
         $this->enumValue = (int) $enumValue;
 
-        return (string) $this;
+        return $this->__toString();
     }
 
     /**
