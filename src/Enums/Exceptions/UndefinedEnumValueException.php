@@ -19,10 +19,10 @@ class UndefinedEnumValueException extends Exception
             list($message, $value) = array('Trying to access an undefined enum value (%s).', $message);
         }
 
-        $this->message = sprintf($message, $value);
+        $message = sprintf($message, $value);
         $this->value = $value;
 
-        parent::__construct($message, $value, $previous);
+        parent::__construct($message, null, $previous);
     }
 
     public function value()

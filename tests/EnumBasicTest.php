@@ -84,10 +84,10 @@ class EnumBasicTest extends TestCase
         try {
             new UserStatus(1337);
         } catch (UndefinedEnumValueException $e) {
-            $caughtException = true;
+            //
         }
 
-        $this->assertTrue(! empty($caughtException));
+        $this->assertTrue(! empty($e));
     }
 
     public function testEnumThrowsUndefinedExceptionOnSetAfterExistingValueWasSet()
@@ -97,10 +97,10 @@ class EnumBasicTest extends TestCase
         try {
             $status->set(1337);
         } catch (UndefinedEnumValueException $e) {
-            $caughtException = true;
+            //
         }
 
-        $this->assertTrue(! empty($caughtException));
+        $this->assertTrue(! empty($e));
     }
 
     public function testEnumDoesNotThrowUndefinedExceptionForExistingValue()
@@ -110,10 +110,24 @@ class EnumBasicTest extends TestCase
         try {
             $status->set(UserStatus::PENDING);
         } catch (UndefinedEnumValueException $e) {
-            $caughtException = true;
+            //
         }
 
-        $this->assertTrue(empty($caughtException));
+        $this->assertTrue(empty($e));
+    }
+
+    public function testUndefinedEnumValueExceptionValueMethod()
+    {
+        $status = new UserStatus(UserStatus::ACTIVE);
+
+        try {
+            $status->set(1337);
+        } catch (UndefinedEnumValueException $e) {
+            //
+        }
+
+        $this->assertTrue(! empty($e));
+        $this->assertEquals(1337, $e->value());
     }
 
     public function testEnumThrowsInvalidArgumentExceptionForExistingValue()
@@ -123,9 +137,29 @@ class EnumBasicTest extends TestCase
         try {
             $status->set('undefined');
         } catch (InvalidArgumentException $e) {
-            $caughtException = true;
+            //
         }
 
-        $this->assertTrue(! empty($caughtException));
+        $this->assertTrue(! empty($e));
+    }
+
+    public function testEnumThrowsUndefinedEnumValueExceptionForGet()
+    {
+        $status = new UserStatus(UserStatus::ACTIVE);
+
+        try {
+            $status->get('undefined');
+        } catch (UndefinedEnumValueException $e) {
+            //
+        }
+
+        $this->assertTrue(! empty($e));
+    }
+
+    public function testEnumArrayValueEncodesToJson()
+    {
+        $status = new UserStatus(UserStatus::MIXED);
+
+        $this->assertInternalType('string', (string) $status);
     }
 }
