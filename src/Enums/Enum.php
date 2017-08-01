@@ -20,9 +20,7 @@ abstract class Enum implements EnumContract
 
     public function __construct($enumValue = null)
     {
-        if ($enumValue) {
-            $this->set($enumValue);
-        }
+        $this->set($enumValue);
     }
 
     /**
