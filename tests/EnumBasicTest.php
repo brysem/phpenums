@@ -3,7 +3,7 @@
 namespace Tests;
 
 use Bryse\Enums\Enum;
-use InvalidArgumentException;
+use Tests\App\Enums\PostStatus;
 use Tests\App\Enums\UserStatus;
 use PHPUnit_Framework_TestCase as TestCase;
 use Bryse\Enums\Exceptions\UndefinedEnumValueException;
@@ -131,13 +131,13 @@ class EnumBasicTest extends TestCase
         }
     }
 
-    public function testEnumThrowsInvalidArgumentExceptionForExistingValue()
+    public function testEnumThrowsUndefinedEnumValueExceptionForExistingValue()
     {
         $status = new UserStatus(UserStatus::ACTIVE);
 
         try {
             $status->set('undefined');
-        } catch (InvalidArgumentException $e) {
+        } catch (UndefinedEnumValueException $e) {
             //
         }
 
@@ -162,5 +162,19 @@ class EnumBasicTest extends TestCase
         $status = new UserStatus(UserStatus::MIXED);
 
         $this->assertInternalType('string', (string) $status);
+    }
+
+    public function testEnumStringValueIsValid()
+    {
+        $status = new PostStatus(PostStatus::UNPUBLISHED);
+
+        $this->assertEquals('Unpublished Post', (string) $status);
+    }
+
+    public function testEnumStringValueIsMethod()
+    {
+        $status = new PostStatus(PostStatus::ARCHIVED);
+
+        $this->assertTrue($status->is(PostStatus::ARCHIVED));
     }
 }

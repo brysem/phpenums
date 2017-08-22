@@ -65,15 +65,11 @@ abstract class Enum implements EnumContract
      */
     public function set($enumValue)
     {
-        if (! is_numeric($enumValue)) {
-            throw new InvalidArgumentException();
-        }
-
         if (! $this->has($enumValue)) {
             throw new UndefinedEnumValueException($enumValue);
         }
 
-        $this->enumValue = (int) $enumValue;
+        $this->enumValue = $enumValue;
 
         return $this->__toString();
     }
