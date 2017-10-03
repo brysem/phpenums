@@ -177,4 +177,11 @@ class EnumBasicTest extends TestCase
 
         $this->assertTrue($status->is(PostStatus::ARCHIVED));
     }
+
+    public function testEnumJsonEncode()
+    {
+        $status = new PostStatus(PostStatus::ARCHIVED);
+
+        $this->assertEquals(json_encode($status), '"'. PostStatus::ARCHIVED. '"');
+    }
 }

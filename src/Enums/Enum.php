@@ -2,6 +2,7 @@
 
 namespace Bryse\Enums;
 
+use JsonSerializable;
 use InvalidArgumentException;
 use Bryse\Enums\Exceptions\UndefinedEnumValueException;
 
@@ -9,7 +10,7 @@ use Bryse\Enums\Exceptions\UndefinedEnumValueException;
  * A simple enum value model, providing an interface to
  * handle its data with helpful methods.
  */
-abstract class Enum implements EnumContract
+abstract class Enum implements EnumContract, JsonSerializable
 {
     /**
      * The current value of the enum.
@@ -81,7 +82,7 @@ abstract class Enum implements EnumContract
      */
     public function value()
     {
-        return (int) $this->enumValue;
+        return $this->enumValue;
     }
 
     /**
@@ -102,6 +103,11 @@ abstract class Enum implements EnumContract
     public function is($value)
     {
         return $this->enumValue == $value;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->value();
     }
 
     public function __toString()
