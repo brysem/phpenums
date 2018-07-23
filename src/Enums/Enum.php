@@ -19,10 +19,19 @@ abstract class Enum implements EnumContract, JsonSerializable
      */
     protected $enumValue;
 
+    /**
+     * The default value of the enum.
+     *
+     * @var int
+     */
+    protected $__default = null;
+    
     public function __construct($enumValue = null)
     {
         if (! is_null($enumValue)) {
             $this->set($enumValue);
+        } elseif (! is_null($this->__default)) {
+            $this->set($this->__default);
         }
     }
 
