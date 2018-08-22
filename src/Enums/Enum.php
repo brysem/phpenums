@@ -25,7 +25,7 @@ abstract class Enum implements EnumContract, JsonSerializable
      * @var int
      */
     protected $__default = null;
-    
+
     public function __construct($enumValue = null)
     {
         if (! is_null($enumValue)) {
