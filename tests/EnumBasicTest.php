@@ -29,6 +29,11 @@ class EnumBasicTest extends TestCase
         $this->assertTrue(is_array(UserStatus::all()));
     }
 
+    public function testEnumKeysMethod()
+    {
+        $this->assertTrue(is_array(UserStatus::keys()));
+    }
+
     public function testEnumValuesMethod()
     {
         $status = new UserStatus();

@@ -39,6 +39,18 @@ abstract class Enum implements EnumContract, JsonSerializable
     }
 
     /**
+     * Returns all available keys on the enum.
+     *
+     * @return array
+     */
+    public static function keys()
+    {
+        $instance = new static();
+
+        return array_keys($instance->values());
+    }
+
+    /**
      * Returns the text equivalent for a specific enum value.
      *
      * @throws UndefinedEnumValueException
