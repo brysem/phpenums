@@ -77,6 +77,8 @@ use Bryse\Enums\Enum;
 
 class UserStatus extends Enum
 {
+    protected $__default = self::PENDING;
+
     const PENDING = 1;
     const ACTIVE = 2;
     const BANNED = 3;
@@ -130,6 +132,7 @@ You can now easily do the following.
 * Easy to use to any framework or even a plain PHP file.
 * PSR-4 autoloading compliant structure.
 * Unit-Testing with PHPUnit.
+* Easy to set default enum value.
 
 ## Contributing
 
