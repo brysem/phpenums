@@ -110,11 +110,15 @@ abstract class Enum implements EnumContract, JsonSerializable
     /**
      * Performs a truth comparison against the current enum value.
      *
+     * @param string|array $value
+     *
      * @return bool
      */
     public function is($value)
     {
-        return $this->enumValue == $value;
+        $value = is_array($value) ? $value : array($value);
+
+        return in_array($this->enumValue, $value);
     }
 
     public function jsonSerialize()
