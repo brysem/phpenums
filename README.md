@@ -17,17 +17,23 @@ $user = new Models\User([
     'status' => new UserStatus(UserStatus::ACTIVE)
 ]);
 
-echo("Hello, your account is currently ". $user->status ."."); // __toString()
+echo("Hello, your account is currently ". $user->status ."."); // __toString() -> Hello, your account is currently Active.
 
 // Get all values.
 UserStatus::all(); // [1 => 'Pending', 2 => 'Active', 3 => 'Banned']
-$user->values();  // [1 => 'Pending', 2 => 'Active', 3 => 'Banned']
+
+// Get all keys from the enum.
+UserStatus::keys(); // [1, 2, 3]
+
+$userStatus = new UserStatus(UserStatus::ACTIVE);
+$userStatus->values();  // [1 => 'Pending', 2 => 'Active', 3 => 'Banned']
 
 // Cast to a string.
 (string) $user->status; // Active
 
 // Perform checks
 $user->status->is(UserStatus::ACTIVE); // true
+$user->status->is([UserStatus::ACTIVE, UserStatus::PENDING]); // true (checkes whether the status is active or pending.)
 $user->status->has(UserStatus::PENDING); // true
 $user->status->has(1337); // false
 
