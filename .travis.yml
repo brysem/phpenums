@@ -8,6 +8,9 @@ php:
   - 5.6
   - 7.0
   - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
   - hhvm
 
 env:
@@ -35,18 +38,6 @@ after_success:
 
 matrix:
   include:
-    - php: 5.3
-      env: setup=lowest
-    - php: 5.3
-      env: setup=stable
-    - php: 5.4
-      env: setup=lowest
-    - php: 5.4
-      env: setup=stable
-    - php: 5.5
-      env: setup=lowest
-    - php: 5.5
-      env: setup=stable
     - php: 5.6
       env: setup=lowest
     - php: 5.6
@@ -60,6 +51,27 @@ matrix:
     - php: 7.1
       env: setup=lowest
     - php: 7.1
+      env:
+        - coverage=true
+        - phpstan=true
+        - setup=stable
+    - php: 7.2
+      env: setup=lowest
+    - php: 7.2
+      env:
+        - coverage=true
+        - phpstan=true
+        - setup=stable
+    - php: 7.3
+      env: setup=lowest
+    - php: 7.3
+      env:
+        - coverage=true
+        - phpstan=true
+        - setup=stable
+    - php: 7.4
+      env: setup=lowest
+    - php: 7.4
       env:
         - coverage=true
         - phpstan=true
