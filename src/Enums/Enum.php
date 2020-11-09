@@ -15,7 +15,7 @@ abstract class Enum implements EnumContract, JsonSerializable
     /**
      * The current value of the enum.
      *
-     * @var int
+     * @var int|string
      */
     protected $enumValue;
 
@@ -55,7 +55,7 @@ abstract class Enum implements EnumContract, JsonSerializable
      *
      * @throws UndefinedEnumValueException
      *
-     * @return string
+     * @return int|string
      */
     public function get($enumValue)
     {
@@ -90,7 +90,7 @@ abstract class Enum implements EnumContract, JsonSerializable
     /**
      * Returns the current enum value.
      *
-     * @return int
+     * @return int|string
      */
     public function value()
     {
