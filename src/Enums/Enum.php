@@ -121,7 +121,8 @@ abstract class Enum implements EnumContract, JsonSerializable
         return in_array($this->enumValue, $value);
     }
 
-    public function jsonSerialize(): mixed
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize()
     {
         return $this->value();
     }
